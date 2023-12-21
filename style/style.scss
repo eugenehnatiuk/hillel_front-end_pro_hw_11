@@ -1,0 +1,34 @@
+@import 'fonts';
+@import 'reset';
+
+
+.main {
+  width: 100vw;
+  height: 100vh;
+  background: pink;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 26px;
+  // .main__title
+
+  &__title {
+    text-align: center;
+    font-family: 'Montserrat';
+    font-size: 56px;
+    font-weight: 700;
+  }
+
+  &__text {
+    text-align: center;
+    font-family: 'Montserrat';
+    font-size: 36px;
+    font-weight: 400;
+  }
+}
+
+.container {
+  padding: 0 30px;
+
+}
