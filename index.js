@@ -8,7 +8,7 @@ function someValue(value) {
 
 function some(array, predicate, thisArg) {
   for (const el of array) {
-    if (predicate(el)) {
+    if (thisArg ? predicate.call(thisArg, el) : predicate(el)) {
       return true;
     }
   }
@@ -16,7 +16,6 @@ function some(array, predicate, thisArg) {
 }
 
 console.log(some(arr, someValue));
-
 
 //////////////////FILTER//////////////////////////
 
@@ -27,7 +26,7 @@ function fileterValue(value) {
 function filter(array, predicate, thisArg) {
   const result = [];
   for (const el of array) {
-    if (predicate(el)) {
+    if (thisArg ? predicate.call(thisArg, el) : predicate(el)) {
       result.push(el);
     }
   }
@@ -35,7 +34,6 @@ function filter(array, predicate, thisArg) {
 }
 
 console.log(filter(arr, fileterValue));
-
 
 //////////////////REDUCE//////////////////////////
 
