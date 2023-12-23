@@ -1,14 +1,18 @@
-const arr = [1, 2, 3];
+const arr = [1, 5, 3, 4, 2, 6];
 
 //////////////////SOME//////////////////////////
 
-function someValue(value) {
-  return value > 1;
+function someValue(element, index, array) {
+  return element > 1;
 }
 
 function some(array, predicate, thisArg) {
-  for (const el of array) {
-    if (thisArg ? predicate.call(thisArg, el) : predicate(el)) {
+  for (let i = 0; i < array.length; i++) {
+    if (
+      thisArg
+        ? predicate.call(thisArg, array[i], i, array)
+        : predicate(array[i], i, array)
+    ) {
       return true;
     }
   }
@@ -17,17 +21,23 @@ function some(array, predicate, thisArg) {
 
 console.log(some(arr, someValue));
 
+
+
 //////////////////FILTER//////////////////////////
 
-function fileterValue(value) {
-  return value > 1;
+function fileterValue(element, index, array) {
+  return !index || array[index - 1] < element;
 }
 
 function filter(array, predicate, thisArg) {
   const result = [];
-  for (const el of array) {
-    if (thisArg ? predicate.call(thisArg, el) : predicate(el)) {
-      result.push(el);
+  for (let i = 0; i < array.length; i++) {
+    if (
+      thisArg
+        ? predicate.call(thisArg, array[i], i, array)
+        : predicate(array[i], i, array)
+    ) {
+      result.push(array[i]);
     }
   }
   return result;
